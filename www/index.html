@@ -166,7 +166,7 @@ function loadPosts() {
     }
 
     // リスナーを設定
-    postsListener = postsRef.on('child_added', function(snapshot) {
+    postsListener = postsRef.on('value', function(snapshot) {
         const posts = [];
         snapshot.forEach(function(childSnapshot) {
             posts.push({
@@ -213,6 +213,8 @@ $(function() {
         const maxLength = id === 'authorInput' ? 20 : 1000;
         updateCharacterCount(id, id + 'Count', maxLength);
     });
+
+
 
     // 投稿処理
     $('#postButton').on('click', function() {
